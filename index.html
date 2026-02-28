@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Martinot — Mécanique, Carrosserie, Dépannage à Dompierre-lès-Ormes</title>
+    <meta name="description" content="Garage Sébastien Martinot à Dompierre-lès-Ormes (71). Mécanique toutes marques, carrosserie peinture, dépannage 24/7, location véhicules. Réseau Motrio. Depuis 1978.">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #1B4F72;
+            --blue-dark: #153E5C;
+            --blue-light: #2471A3;
+            --yellow: #F4D03F;
+            --yellow-dark: #D4AC0D;
+            --white: #FAFAFA;
+            --gray-100: #F0F0F0;
+            --gray-200: #E0E0E0;
+            --gray-600: #555;
+            --gray-800: #222;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo { height: 48px; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-800);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--blue); }
+
+        .nav-burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+        .nav-burger span {
+            width: 26px; height: 3px;
+            background: var(--gray-800);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--blue);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('img/3.jpg') center/cover no-repeat;
+            opacity: 0.25;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            width: 100%;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--yellow);
+            color: var(--blue-dark);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero h1 span { color: var(--yellow); }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 560px;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--blue-dark);
+        }
+        .btn-yellow:hover {
+            background: var(--yellow-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244,208,63,0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .btn-outline:hover {
+            border-color: var(--yellow);
+            color: var(--yellow);
+        }
+
+        /* ─── STATS BAR ─── */
+        .stats-bar {
+            background: var(--yellow);
+            padding: 0;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .stat {
+            padding: 28px 24px;
+            text-align: center;
+            border-right: 1px solid rgba(27,79,114,0.12);
+        }
+        .stat:last-child { border-right: none; }
+        .stat-number {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: var(--blue-dark);
+            line-height: 1;
+        }
+        .stat-label {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--blue);
+            margin-top: 4px;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-full {
+            padding: 80px 24px;
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+        .yellow-line {
+            width: 60px;
+            height: 4px;
+            background: var(--yellow);
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        /* ─── SERVICES ─── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 32px 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--yellow);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+            transform-origin: bottom;
+        }
+        .service-card:hover {
+            border-color: var(--blue-light);
+            box-shadow: 0 8px 30px rgba(27,79,114,0.1);
+            transform: translateY(-4px);
+        }
+        .service-card:hover::before { transform: scaleY(1); }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .service-icon svg { width: 24px; height: 24px; fill: var(--yellow); }
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--gray-800);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ─── ABOUT ─── */
+        .about-bg {
+            background: var(--gray-100);
+        }
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img-wrap {
+            position: relative;
+        }
+        .about-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .about-img-accent {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            width: 160px;
+            height: 160px;
+            border: 4px solid var(--yellow);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        .about-text h2 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .about-text p {
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        .about-text strong { color: var(--gray-800); }
+        .about-highlight {
+            display: flex;
+            gap: 24px;
+            margin-top: 28px;
+        }
+        .about-highlight-item {
+            flex: 1;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .about-highlight-item .number {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--blue);
+        }
+        .about-highlight-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-600);
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        /* ─── GALLERY ─── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(27,79,114,0.85));
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── MOTRIO ─── */
+        .motrio-section {
+            background: var(--blue);
+            color: #fff;
+        }
+        .motrio-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .motrio-logo { height: 80px; flex-shrink: 0; }
+        .motrio-inner { padding: 0 24px; }
+        .motrio-text h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .motrio-text h3 span { color: var(--yellow); }
+        .motrio-text p {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        /* ─── SERVICES PLUS ─── */
+        .extras-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .extra-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        .extra-icon {
+            width: 40px; height: 40px;
+            background: rgba(27,79,114,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .extra-icon svg { width: 20px; height: 20px; fill: var(--blue); }
+        .extra-item span {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            color: var(--gray-800);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact-bg { background: var(--gray-100); }
+        .contact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 24px; }
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .contact-item-icon {
+            width: 44px; height: 44px;
+            background: var(--blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-item-icon svg { width: 22px; height: 22px; fill: var(--yellow); }
+        .contact-item h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            color: var(--gray-800);
+            margin-bottom: 2px;
+        }
+        .contact-item p, .contact-item a {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+        .contact-item a:hover { color: var(--blue); }
+
+        .contact-map {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            border: 0;
+        }
+
+        /* ─── CTA BAND ─── */
+        .cta-band {
+            background: var(--yellow);
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .cta-band h2 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            text-transform: uppercase;
+            color: var(--blue-dark);
+            margin-bottom: 8px;
+        }
+        .cta-band p {
+            color: var(--blue);
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+        .btn-blue {
+            background: var(--blue);
+            color: #fff;
+        }
+        .btn-blue:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27,79,114,0.3);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--blue-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer a { color: var(--yellow); text-decoration: none; }
+        .footer a:hover { color: #fff; }
+        .footer-logo { height: 36px; opacity: 0.8; }
+        .footer-copyright { margin-top: 8px; }
+        .footer p { font-size: 0.85rem; }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; left: 0; right: 0;
+                background: #fff;
+                padding: 24px;
+                gap: 16px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            }
+            .nav-burger { display: flex; }
+
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .stat { border-bottom: 1px solid rgba(27,79,114,0.12); }
+
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .about-img-accent { display: none; }
+
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+
+            .extras-grid { grid-template-columns: 1fr; }
+
+            .contact-grid { grid-template-columns: 1fr; }
+
+            .motrio-inner { flex-direction: column; text-align: center; gap: 24px; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-ctas { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .about-highlight { flex-direction: column; gap: 12px; }
+            .section { padding: 56px 20px; }
+            .section-full { padding: 56px 20px; }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#"><img src="img/logo.png" alt="Garage Martinot" class="nav-logo"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">Le garage</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Depuis 1978
+        </div>
+        <h1>Votre garage<br><span>toutes marques</span><br>à Dompierre</h1>
+        <p class="hero-sub">Mécanique, carrosserie, dépannage, location — une équipe de passionnés à votre service depuis plus de 45 ans en Saône-et-Loire.</p>
+        <div class="hero-ctas">
+            <a href="tel:0385502402" class="btn btn-yellow">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
+                03 85 50 24 02
+            </a>
+            <a href="#services" class="btn btn-outline">Nos services</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat fade-up">
+            <div class="stat-number">45+</div>
+            <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat fade-up">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Collaborateurs</div>
+        </div>
+        <div class="stat fade-up">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Toutes marques</div>
+        </div>
+        <div class="stat fade-up">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Dépannage</div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <div class="yellow-line"></div>
+    <h2 class="section-title">Nos services</h2>
+    <p class="section-subtitle">Un garage complet pour tous vos besoins automobiles, de l'entretien courant à la carrosserie en passant par le dépannage.</p>
+    <div class="services-grid">
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 9V7h-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v2H2v2h2v2H2v2h2v2H2v2h2v2a2 2 0 002 2h12a2 2 0 002-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H6V5h12v14zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+            </div>
+            <h3>Mécanique & entretien</h3>
+            <p>Révisions, vidanges, freins, distribution, embrayage, diagnostic électronique. Toutes marques, toutes motorisations.</p>
+        </div>
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M20.71 4.63l-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41zM7 14a3 3 0 00-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2a4 4 0 004-4 3 3 0 00-3-3z"/></svg>
+            </div>
+            <h3>Carrosserie & peinture</h3>
+            <p>Réparation de dégâts, peinture professionnelle, débosselage, remplacement d'éléments. Travail soigné, finition impeccable.</p>
+        </div>
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3>Pare-brise & optiques</h3>
+            <p>Remplacement et réparation de pare-brise, rénovation de phares et optiques. Intervention rapide, prise en charge directe.</p>
+        </div>
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8a1 1 0 001 1h1a1 1 0 001-1v-1h12v1a1 1 0 001 1h1a1 1 0 001-1v-8l-2.08-5.99zM6.5 16a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm11 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <h3>Voitures sans permis</h3>
+            <p>Vente et réparation de véhicules sans permis. Un service dédié pour vous accompagner dans votre mobilité quotidienne.</p>
+        </div>
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 5H3a2 2 0 00-2 2v9h2a3 3 0 006 0h6a3 3 0 006 0h2V12l-3-4h-3V5zm-2 14a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM20 11h-4l2 3h2v-3zM7 19a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+            </div>
+            <h3>Location véhicules</h3>
+            <p>Voitures de tourisme, utilitaires réfrigérés, mini-pelles. Prêt de véhicule de courtoisie pendant vos réparations.</p>
+        </div>
+        <div class="service-card fade-up">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6a2 2 0 110 4 2 2 0 010-4zm-3.5 8c0-1.83 2.34-3 3.5-3s3.5 1.17 3.5 3H8.5z"/></svg>
+            </div>
+            <h3>Dépannage remorquage</h3>
+            <p>Assistance 24h/24, 7j/7 pour voitures, utilitaires et camping-cars. Intervention rapide sur le secteur de Dompierre-lès-Ormes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg section-full" id="about">
+    <div class="about-grid">
+        <div class="about-img-wrap fade-up">
+            <img src="img/4.jpg" alt="Sébastien Martinot - passionné automobile et rallye" class="about-img">
+            <div class="about-img-accent"></div>
+        </div>
+        <div class="about-text fade-up">
+            <div class="yellow-line"></div>
+            <h2>Un garage familial,<br>une passion automobile</h2>
+            <p>Fondé en <strong>1978</strong>, le Garage Martinot est une institution de Dompierre-lès-Ormes. En <strong>2015</strong>, Sébastien Martinot, fils du fondateur et véritable passionné d'automobile, reprend les rênes avec plus de <strong>25 ans d'expérience</strong> en mécanique.</p>
+            <p>Passionné de <strong>rallye</strong>, Sébastien met la même exigence et la même rigueur dans chaque intervention, qu'il s'agisse d'un simple entretien ou d'une réparation complexe.</p>
+            <p>Aujourd'hui, l'équipe compte <strong>6 collaborateurs</strong> — mécaniciens, carrossier, apprentis et secrétaire — qui partagent le même engagement : un travail bien fait, au juste prix.</p>
+            <div class="about-highlight">
+                <div class="about-highlight-item">
+                    <div class="number">1978</div>
+                    <div class="label">Création</div>
+                </div>
+                <div class="about-highlight-item">
+                    <div class="number">25+</div>
+                    <div class="label">Ans d'expérience</div>
+                </div>
+                <div class="about-highlight-item">
+                    <div class="number">6</div>
+                    <div class="label">Collaborateurs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="galerie">
+    <div class="yellow-line"></div>
+    <h2 class="section-title">Notre atelier</h2>
+    <p class="section-subtitle">Équipements professionnels et savoir-faire artisanal pour des interventions de qualité.</p>
+    <div class="gallery-grid">
+        <div class="gallery-item fade-up">
+            <img src="img/1.jpg" alt="Atelier de carrosserie et peinture — Garage Martinot">
+            <div class="overlay">Carrosserie & peinture</div>
+        </div>
+        <div class="gallery-item fade-up">
+            <img src="img/3.jpg" alt="Atelier de mécanique — Garage Martinot">
+            <div class="overlay">Mécanique & entretien</div>
+        </div>
+        <div class="gallery-item fade-up">
+            <img src="img/2.jpg" alt="Service de dépannage — Garage Martinot">
+            <div class="overlay">Dépannage & assistance</div>
+        </div>
+    </div>
+</section>
+
+<!-- MOTRIO -->
+<section class="motrio-section section-full">
+    <div class="motrio-inner">
+        <img src="img/motrio.png" alt="Réseau Motrio" class="motrio-logo fade-up">
+        <div class="motrio-text fade-up">
+            <h3>Membre du réseau <span>Motrio</span></h3>
+            <p>En tant que garage agréé Motrio, nous vous garantissons des pièces de qualité équivalente aux pièces d'origine, des diagnostics précis grâce à nos outils professionnels, et des tarifs compétitifs. Toutes marques, toutes motorisations.</p>
+        </div>
+    </div>
+</section>
+
+<!-- EXTRAS -->
+<section class="section">
+    <div class="yellow-line"></div>
+    <h2 class="section-title">Et aussi</h2>
+    <p class="section-subtitle">Des services complémentaires pour simplifier votre quotidien automobile.</p>
+    <div class="extras-grid">
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8a1 1 0 001 1h1a1 1 0 001-1v-1h12v1a1 1 0 001 1h1a1 1 0 001-1v-8l-2.08-5.99zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <span>Véhicules neufs & occasion</span>
+        </div>
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+            </div>
+            <span>Carte grise — 25 &#8364; TTC</span>
+        </div>
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+            </div>
+            <span>Facilités de paiement</span>
+        </div>
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8a1 1 0 001 1h1a1 1 0 001-1v-1h12v1a1 1 0 001 1h1a1 1 0 001-1v-8l-2.08-5.99zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <span>Véhicule de courtoisie</span>
+        </div>
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 5H3a2 2 0 00-2 2v9h2a3 3 0 006 0h6a3 3 0 006 0h2V12l-3-4h-3V5zm3 6h-4l2 3h2v-3z"/></svg>
+            </div>
+            <span>Location utilitaires réfrigérés</span>
+        </div>
+        <div class="extra-item fade-up">
+            <div class="extra-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+            </div>
+            <span>Location mini-pelle</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+    <h2>Un souci avec votre véhicule ?</h2>
+    <p>Appelez-nous directement ou passez nous voir — sans rendez-vous pour l'entretien courant.</p>
+    <a href="tel:0385502402" class="btn btn-blue">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
+        Appeler le 03 85 50 24 02
+    </a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-bg section-full" id="contact">
+    <div class="contact-grid">
+        <div class="fade-up">
+            <div class="yellow-line"></div>
+            <h2 class="section-title">Nous trouver</h2>
+            <p class="section-subtitle">Le garage est situé au c&oelig;ur de Dompierre-lès-Ormes, sur la route de Trambly.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Adresse</h4>
+                        <p>276 Route de Trambly<br>71520 Dompierre-lès-Ormes</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <a href="tel:0385502402">03 85 50 24 02</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:contact@garage-martinot71.fr">contact@garage-martinot71.fr</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Horaires</h4>
+                        <p>Lundi au vendredi<br>8h — 12h / 14h — 19h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-map fade-up">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2753.4!2d4.5249!3d46.3563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f3a8b0c0000001%3A0x0!2s276+Route+de+Trambly%2C+71520+Dompierre-l%C3%A8s-Ormes!5e0!3m2!1sfr!2sfr!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div>
+            <img src="img/logo.png" alt="Garage Martinot" class="footer-logo">
+            <p class="footer-copyright">&copy; 2026 Garage Sébastien Martinot — Tous droits réservés</p>
+        </div>
+        <div>
+            <p>276 Route de Trambly, 71520 Dompierre-lès-Ormes</p>
+            <p><a href="tel:0385502402">03 85 50 24 02</a> · <a href="mailto:contact@garage-martinot71.fr">contact@garage-martinot71.fr</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Mobile menu
+document.getElementById('navBurger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+// Scroll animations
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+});
+</script>
+</body>
+</html>
